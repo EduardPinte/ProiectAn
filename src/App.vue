@@ -1,11 +1,22 @@
-<script setup></script>
+<script setup>
+import LogIn from './components/LogIn.vue';
+</script>
 
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+    <main class="app">
+        <LogIn/>
+    </main>
 </template>
 
-<style scoped></style>
+<style scoped>
+.app{
+    display: flex; 
+    flex-direction: center;
+    align-items: top;
+    justify-content: center;
+    min-height: 100vh;
+    background: #B2EBF2;
+}
+
+
+</style>
