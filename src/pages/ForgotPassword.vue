@@ -1,15 +1,17 @@
 <script setup>
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 
 const email = ref('')
+const router = useRouter()
 
 function handleReset() {
   if (!email.value) {
     alert("Please enter your email!")
     return
   }
-  console.log('Password reset requested for:', email.value)
-  alert(`If an account with ${email.value} exists, a reset link has been sent.`)
+  
+  router.push('/check-email') 
 }
 </script>
 
@@ -17,20 +19,10 @@ function handleReset() {
   <div class="forgot-container">
     <form @submit.prevent="handleReset" class="forgot-form">
       <h2>Forgot Password</h2>
-      <p>Enter your email to reset your password.</p>
+      <p>Enter your email to receive a verification code.</p>
 
-      <div class="form-group">
-        <label for="email">Email:</label>
-        <input
-          id="email"
-          type="email"
-          v-model="email"
-          placeholder="Enter your email"
-          required
-        />
-      </div>
-
-      <button type="submit">Reset Password</button>
+      <input type="email" v-model="email" placeholder="Enter your email" required />
+      <button type="submit">Send Code</button>
     </form>
   </div>
 </template>
@@ -41,11 +33,11 @@ function handleReset() {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #B2EBF2;
+  background-color: #B2EBF2; /* background albastru deschis */
 }
 
 .forgot-form {
-  background: white;
+  background-color: white; /* container alb */
   padding: 50px;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
@@ -54,19 +46,11 @@ function handleReset() {
   text-align: center;
 }
 
-.form-group {
-  margin-bottom: 20px;
-  text-align: left;
-}
-
-label {
-  display: block;
-  margin-bottom: 6px;
-}
-
 input {
   width: 100%;
   padding: 10px;
+  margin-top: 12px;
+  margin-bottom: 20px;
   border: 1px solid #bcb1b1;
   border-radius: 5px;
 }
@@ -80,7 +64,6 @@ button {
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
-  margin-top: 10px;
   transition: background-color 0.3s;
 }
 
