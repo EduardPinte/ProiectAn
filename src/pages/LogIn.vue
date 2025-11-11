@@ -1,5 +1,5 @@
 <script setup>
-import LoginForm from './LogInForm.vue'
+import LoginForm from '@/components/LogInForm.vue'
 
 function handleLogin({ email, password }) {
   console.log('Login attempt:', email, password)

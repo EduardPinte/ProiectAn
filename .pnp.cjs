@@ -35,7 +35,8 @@ const RAW_RUNTIME_STATE =
           ["tailwindcss", "npm:4.1.17"],\
           ["vite", "virtual:3f333984041873e843cdaff607b869e75e9038237c974914e74c334320eff83e88bb55d58f7981b9af70eeb91c3f0b36cbed6702f0dcb6922ffc01e1997a400d#npm:7.2.2"],\
           ["vite-plugin-vue-devtools", "virtual:3f333984041873e843cdaff607b869e75e9038237c974914e74c334320eff83e88bb55d58f7981b9af70eeb91c3f0b36cbed6702f0dcb6922ffc01e1997a400d#npm:8.0.3"],\
-          ["vue", "virtual:3f333984041873e843cdaff607b869e75e9038237c974914e74c334320eff83e88bb55d58f7981b9af70eeb91c3f0b36cbed6702f0dcb6922ffc01e1997a400d#npm:3.5.24"]\
+          ["vue", "virtual:3f333984041873e843cdaff607b869e75e9038237c974914e74c334320eff83e88bb55d58f7981b9af70eeb91c3f0b36cbed6702f0dcb6922ffc01e1997a400d#npm:3.5.24"],\
+          ["vue-router", "virtual:3f333984041873e843cdaff607b869e75e9038237c974914e74c334320eff83e88bb55d58f7981b9af70eeb91c3f0b36cbed6702f0dcb6922ffc01e1997a400d#npm:4.6.3"]\
         ],\
         "linkType": "SOFT"\
       }]\
@@ -1471,6 +1472,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["@vue/devtools-api", [\
+      ["npm:6.6.4", {\
+        "packageLocation": "../home/node/.yarn/berry/cache/@vue-devtools-api-npm-6.6.4-495c1fc100-10c0.zip/node_modules/@vue/devtools-api/",\
+        "packageDependencies": [\
+          ["@vue/devtools-api", "npm:6.6.4"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["@vue/devtools-core", [\
       ["npm:8.0.3", {\
         "packageLocation": "../home/node/.yarn/berry/cache/@vue-devtools-core-npm-8.0.3-88225307bf-10c0.zip/node_modules/@vue/devtools-core/",\
@@ -2602,7 +2612,8 @@ const RAW_RUNTIME_STATE =
           ["tailwindcss", "npm:4.1.17"],\
           ["vite", "virtual:3f333984041873e843cdaff607b869e75e9038237c974914e74c334320eff83e88bb55d58f7981b9af70eeb91c3f0b36cbed6702f0dcb6922ffc01e1997a400d#npm:7.2.2"],\
           ["vite-plugin-vue-devtools", "virtual:3f333984041873e843cdaff607b869e75e9038237c974914e74c334320eff83e88bb55d58f7981b9af70eeb91c3f0b36cbed6702f0dcb6922ffc01e1997a400d#npm:8.0.3"],\
-          ["vue", "virtual:3f333984041873e843cdaff607b869e75e9038237c974914e74c334320eff83e88bb55d58f7981b9af70eeb91c3f0b36cbed6702f0dcb6922ffc01e1997a400d#npm:3.5.24"]\
+          ["vue", "virtual:3f333984041873e843cdaff607b869e75e9038237c974914e74c334320eff83e88bb55d58f7981b9af70eeb91c3f0b36cbed6702f0dcb6922ffc01e1997a400d#npm:3.5.24"],\
+          ["vue-router", "virtual:3f333984041873e843cdaff607b869e75e9038237c974914e74c334320eff83e88bb55d58f7981b9af70eeb91c3f0b36cbed6702f0dcb6922ffc01e1997a400d#npm:4.6.3"]\
         ],\
         "linkType": "SOFT"\
       }]\
@@ -3392,6 +3403,29 @@ const RAW_RUNTIME_STATE =
         "packagePeers": [\
           "@types/typescript",\
           "typescript"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["vue-router", [\
+      ["npm:4.6.3", {\
+        "packageLocation": "../home/node/.yarn/berry/cache/vue-router-npm-4.6.3-db248b9fd8-10c0.zip/node_modules/vue-router/",\
+        "packageDependencies": [\
+          ["vue-router", "npm:4.6.3"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:3f333984041873e843cdaff607b869e75e9038237c974914e74c334320eff83e88bb55d58f7981b9af70eeb91c3f0b36cbed6702f0dcb6922ffc01e1997a400d#npm:4.6.3", {\
+        "packageLocation": "./.yarn/__virtual__/vue-router-virtual-01fa414442/2/home/node/.yarn/berry/cache/vue-router-npm-4.6.3-db248b9fd8-10c0.zip/node_modules/vue-router/",\
+        "packageDependencies": [\
+          ["@types/vue", null],\
+          ["@vue/devtools-api", "npm:6.6.4"],\
+          ["vue", "virtual:3f333984041873e843cdaff607b869e75e9038237c974914e74c334320eff83e88bb55d58f7981b9af70eeb91c3f0b36cbed6702f0dcb6922ffc01e1997a400d#npm:3.5.24"],\
+          ["vue-router", "virtual:3f333984041873e843cdaff607b869e75e9038237c974914e74c334320eff83e88bb55d58f7981b9af70eeb91c3f0b36cbed6702f0dcb6922ffc01e1997a400d#npm:4.6.3"]\
+        ],\
+        "packagePeers": [\
+          "@types/vue",\
+          "vue"\
         ],\
         "linkType": "HARD"\
       }]\
