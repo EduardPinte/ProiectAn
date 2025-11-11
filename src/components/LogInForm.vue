@@ -36,6 +36,12 @@ function handleSubmit() {
       required
     />
 
+    <div class ="forgot-container">
+         <router-link to="/forgot-password" class="forgot-link">
+            Forgot Password?
+        </router-link>
+    </div>
+
     <button type="submit">Login</button>
   </form>
 </template>
@@ -67,5 +73,13 @@ button {
 }
 button:hover {
   background-color: #2c8e64;
+}
+
+.forgot-container{
+    font-size: 13px;
+    color: blue;
+    text-align: right;
+    margin-bottom: 20px;
+    margin-top: -20px;
 }
 </style>
