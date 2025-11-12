@@ -3,7 +3,6 @@
 
 <template>
   <div class="app">
-    <!-- router-view afișează componenta corespunzătoare rutei curente -->
     <router-view />
   </div>
 </template>
