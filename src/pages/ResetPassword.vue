@@ -23,9 +23,12 @@ function handleReset() {
 </script>
 
 <template>
-  <AuthLayout>
-    <AuthCard>
-      <Logo />
+  <div class="flex items-center justify-center min-h-screen bg-cyan-200">
+    <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+      <div class="flex justify-center mb-6">
+        <img src="@/assets/logoMotix.png" alt="Logo" class="h-16" />
+      </div>
+      
       <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center">Reset Password</h2>
 
       <p class="text-sm text-gray-600 mb-4 text-center">Enter a new password for your account.</p>
@@ -34,14 +37,16 @@ function handleReset() {
         <FormInput v-model="password" id="password" type="password" label="New Password" placeholder="Enter new password" required />
         <FormInput v-model="confirmPassword" id="confirmPassword" type="password" label="Confirm Password" placeholder="Repeat new password" required />
 
-        <BaseButton type="submit">Reset Password</BaseButton>
+        <button type="submit" class="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-md transition-colors duration-300">
+          Reset Password
+        </button>
       </form>
 
       <div class="text-sm text-center mt-4">
         <router-link to="/login" class="text-blue-600 hover:text-green-600">Back to login</router-link>
       </div>
-    </AuthCard>
-  </AuthLayout>
+    </div>
+  </div>
 </template>
 
 <style scoped>

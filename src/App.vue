@@ -2,18 +2,9 @@
 </script>
 
 <template>
-  <div class="app">
-    <router-view />
-  </div>
+  <router-view />
 </template>
 
 <style scoped>
-.app {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  background: #B2EBF2;
-}
+/* Each page handles its own layout and background */
 </style>
