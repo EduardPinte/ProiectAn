@@ -7,6 +7,8 @@ import ResetPassword from '@/pages/ResetPassword.vue'
 import Home from '@/pages/Home.vue'
 import SelectCar from '@/pages/SelectCar.vue'
 import Maintain from '@/pages/Maintain.vue'
+import History from '@/pages/History.vue'
+import Profile from '@/pages/Profile.vue'
 
 const routes = [
   { path: '/', redirect: '/login' },
@@ -17,7 +19,9 @@ const routes = [
   { path: '/reset-password', component: ResetPassword },
   { path: '/home', component: Home},
   { path: '/select-car', component: SelectCar },
-  { path: '/maintain', component: Maintain }
+  { path: '/maintain', component: Maintain },
+  { path: '/history', component: History }, 
+  { path: '/profile', component: Profile }
 ]
 
 const router = createRouter({

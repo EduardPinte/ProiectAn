@@ -18,9 +18,9 @@
 
 
   <div class="bottom-button">
-        <router-link to="/select-car"><button>History</button></router-link>
+        <router-link to="/history"><button>History</button></router-link>
         <router-link to="/maintain"><button>Maintain</button></router-link>
-        <router-link to="/select-car"><button>Profile</button></router-link>
+        <router-link to="/profile"><button>Profile</button></router-link>
          
     
     </div>
