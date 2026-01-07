@@ -14,13 +14,13 @@ import { useRouter } from 'vue-router'
       </div>
 
       <div class="button-wrapper">
-        <router-link to="/select-car">
+        <router-link to="/selectBMY">
           <button>Select by Brand / Model / Year</button>
         </router-link>
       </div>
 
       <div class="button-wrapper">
-        <router-link to="/select-car">
+        <router-link to="/searchVIN">
           <button>Search by VIN (Chassis Number)</button>
         </router-link>
       </div>

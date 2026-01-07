@@ -9,6 +9,8 @@ import SelectCar from '@/pages/SelectCar.vue'
 import Maintain from '@/pages/Maintain.vue'
 import History from '@/pages/History.vue'
 import Profile from '@/pages/Profile.vue'
+import SelectBMY from '@/pages/SelectBMY.vue' 
+import SearchVIN from '@/pages/SearchVIN.vue'
 
 const routes = [
   { path: '/', redirect: '/login' },
@@ -21,7 +23,9 @@ const routes = [
   { path: '/select-car', component: SelectCar },
   { path: '/maintain', component: Maintain },
   { path: '/history', component: History }, 
-  { path: '/profile', component: Profile }
+  { path: '/profile', component: Profile },
+  { path: '/selectBMY', component: SelectBMY },
+  { path: '/searchVIN', component: SearchVIN }
 ]
 
 const router = createRouter({
