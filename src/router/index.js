@@ -11,6 +11,7 @@ import History from '@/pages/History.vue'
 import Profile from '@/pages/Profile.vue'
 import SelectBMY from '@/pages/SelectBMY.vue' 
 import SearchVIN from '@/pages/SearchVIN.vue'
+import SearchLicience from '@/pages/SearchLicience.vue'
 
 const routes = [
   { path: '/', redirect: '/login' },
@@ -25,7 +26,9 @@ const routes = [
   { path: '/history', component: History }, 
   { path: '/profile', component: Profile },
   { path: '/selectBMY', component: SelectBMY },
-  { path: '/searchVIN', component: SearchVIN }
+  { path: '/searchVIN', component: SearchVIN },
+  { path: '/searchLicense', component: SearchLicience, alias: '/searchLicensePlate' }
+
 ]
 
 const router = createRouter({

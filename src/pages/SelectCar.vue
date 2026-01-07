@@ -8,7 +8,7 @@ import { useRouter } from 'vue-router'
 
     <div class="middle-buttons">
       <div class="button-wrapper">
-        <router-link to="/history">
+        <router-link to="/searchLicense">
           <button>Search by License Plate</button>
         </router-link>
       </div>
