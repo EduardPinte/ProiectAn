@@ -26,14 +26,10 @@
     const isFormValid = computed(() =>
         brand.value && model.value && year.value
     )
-//action
-    function search() {
-        store.searchByBMY({
-            brand: brand.value,
-            model: model.value,
-            year: year.value
-        })
-    }
+  // action
+  function search() {
+    store.searchByModel(brand.value, model.value, year.value)
+  }
    
 </script>
 

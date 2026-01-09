@@ -10,39 +10,85 @@ export const useCarStore = defineStore('car', {
     maintenanceLimit: 120000,
     loading: false,
     error: null
+
+
+    maintenanceData: [
+  {
+    brand: 'BMW',
+    model: 'X3',
+    fromYear: 2018,
+    toYear: 2022,
+    oilType: '5W-30',
+    oilCapacity: '6.5L',
+    serviceIntervalKm: 15000
+  },
+  {
+    brand: 'BMW',
+    model: 'X3',
+    fromYear: 2013,
+    toYear: 2017,
+    oilType: '5W-40',
+    oilCapacity: '6.5L',
+    serviceIntervalKm: 12000
+  },
+  {
+    brand: 'Audi',
+    model: 'A4',
+    fromYear: 2018,
+    toYear: 2021,
+    oilType: '0W-30',
+    oilCapacity: '5.2L',
+    serviceIntervalKm: 15000
+  }
+]
+
   }),
 
  
   getters: {
-    hasCar: (state) => !!state.currentCar,
+  hasCar: (state) => !!state.currentCar,
 
-    carBrand: (state) => state.currentCar?.brand || '',
+  carBrand: (state) => state.currentCar?.brand || '',
 
-    carModel: (state) => state.currentCar?.model || '',
+  carModel: (state) => state.currentCar?.model || '',
 
-    carYear: (state) => state.currentCar?.year || null,
+  carYear: (state) => state.currentCar?.year || null,
 
-    carAge: (state) =>
-      state.currentCar
-        ? new Date().getFullYear() - state.currentCar.year
-        : 0,
+  carAge: (state) =>
+    state.currentCar
+      ? new Date().getFullYear() - state.currentCar.year
+      : 0,
 
-    carName: (state) =>
-      state.currentCar
-        ? `${state.currentCar.brand} ${state.currentCar.model}`
-        : '',
+  carName: (state) =>
+    state.currentCar
+      ? `${state.currentCar.brand} ${state.currentCar.model}`
+      : '',
 
-    recentCarsCount: (state) => state.recentCars.length,
+  recentCarsCount: (state) => state.recentCars.length,
 
-    searchHistoryCount: (state) => state.searchHistory.length,
+  searchHistoryCount: (state) => state.searchHistory.length,
 
-    lastSearchType: (state) => state.searchType,
+  lastSearchType: (state) => state.searchType,
 
-    isMaintenanceDue: (state) =>
-      state.userKm >= state.maintenanceLimit,
+  isMaintenanceDue: (state) =>
+    state.userKm >= state.maintenanceLimit,
 
-    isLoading: (state) => state.loading
-  },
+  isLoading: (state) => state.loading,
+
+  // 👇 AICI ÎL PUI
+  maintenanceInfo(state) {
+    if (!state.currentCar) return null
+
+    return (
+      state.maintenanceData.find(item =>
+        item.brand === state.currentCar.brand &&
+        item.model === state.currentCar.model &&
+        state.currentCar.year >= item.fromYear &&
+        state.currentCar.year <= item.toYear
+      ) || null
+    )
+  }
+},
 
   actions: {
     searchByVIN(vin) {

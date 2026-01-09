@@ -1,9 +1,18 @@
 <script setup>
     import { ref, computed, watch } from 'vue'
     import { useCarStore } from '@/stores/carStore'
+    import { useRouter } from 'vue-router'
+
+    const router = useRouter()
 
     const license = ref('')
     const store = useCarStore()
+
+
+    // search action: will call the store and navigate to results
+
+
+
 
     // computed validation for license
     const isLicenseValid = computed(() => license.value.length >= 5)
@@ -35,7 +44,9 @@
 
     // pinia action
     function search() {
+      if (!isLicenseValid.value) return
       store.searchByLicense(license.value)
+      router.push('/result')
     }
 </script>
 
