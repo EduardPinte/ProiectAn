@@ -12,6 +12,7 @@ import Profile from '@/pages/Profile.vue'
 import SelectBMY from '@/pages/SelectBMY.vue' 
 import SearchVIN from '@/pages/SearchVIN.vue'
 import SearchLicience from '@/pages/SearchLicience.vue'
+import Result from '@/pages/Result.vue'
 
 const routes = [
   { path: '/', redirect: '/login' },
@@ -27,8 +28,8 @@ const routes = [
   { path: '/profile', component: Profile },
   { path: '/selectBMY', component: SelectBMY },
   { path: '/searchVIN', component: SearchVIN },
-  { path: '/searchLicense', component: SearchLicience, alias: '/searchLicensePlate' }
-
+  { path: '/searchLicense', component: SearchLicience, alias: '/searchLicensePlate' },
+  { path: '/result', component: Result }
 ]
 
 const router = createRouter({

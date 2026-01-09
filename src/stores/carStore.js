@@ -4,6 +4,7 @@ export const useCarStore = defineStore('car', {
   state: () => ({
     currentCar: null,
     recentCars: [],
+    searchHistory: [],
     searchType: '', 
     userKm: 0,
     maintenanceLimit: 120000,
@@ -33,6 +34,8 @@ export const useCarStore = defineStore('car', {
 
     recentCarsCount: (state) => state.recentCars.length,
 
+    searchHistoryCount: (state) => state.searchHistory.length,
+
     lastSearchType: (state) => state.searchType,
 
     isMaintenanceDue: (state) =>
@@ -48,9 +51,11 @@ export const useCarStore = defineStore('car', {
         vin,
         brand: 'Audi',
         model: 'A4',
-        year: 2019
+        year: 2019,
+        searchedAt: new Date().toISOString()
       }
       this.addRecentCar(this.currentCar)
+      this.addToSearchHistory(this.currentCar)
     },
 
     searchByLicense(license) {
@@ -59,15 +64,18 @@ export const useCarStore = defineStore('car', {
         license,
         brand: 'BMW',
         model: 'X3',
-        year: 2020
+        year: 2020,
+        searchedAt: new Date().toISOString()
       }
       this.addRecentCar(this.currentCar)
+      this.addToSearchHistory(this.currentCar)
     },
 
     searchByModel(brand, model, year) {
       this.searchType = 'model'
-      this.currentCar = { brand, model, year }
+      this.currentCar = { brand, model, year, searchedAt: new Date().toISOString() }
       this.addRecentCar(this.currentCar)
+      this.addToSearchHistory(this.currentCar)
     },
 
     addRecentCar(car) {
@@ -99,6 +107,17 @@ export const useCarStore = defineStore('car', {
 
     clearHistory() {
       this.recentCars = []
+    },
+
+    addToSearchHistory(car) {
+      this.searchHistory.unshift(car)
+      if (this.searchHistory.length > 50) {
+        this.searchHistory.pop()
+      }
+    },
+
+    setCurrentFromHistory(car) {
+      this.currentCar = car
     }
   }
 })
