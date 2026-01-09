@@ -39,7 +39,9 @@ watch(
 
 // ACTION
 function search() {
+  if (!isVinValid.value) return
   store.searchByVIN(vin.value)
+  router.push('/result')
 }
 </script>
 

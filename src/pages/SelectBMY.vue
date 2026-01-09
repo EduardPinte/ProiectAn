@@ -1,8 +1,10 @@
 <script setup>
     import  {ref, computed } from 'vue';
     import { useCarStore } from '@/stores/carStore';
+    import { useRouter } from 'vue-router'
 
     const store = useCarStore();
+    const router = useRouter();
 
     const brand = ref('');
     const model = ref('');
@@ -24,25 +26,27 @@
     })
 
     const isFormValid = computed(() =>
-        brand.value && model.value && year.value
+      brand.value && model.value && year.value
     )
   // action
   function search() {
-    store.searchByModel(brand.value, model.value, year.value)
-  }
+  if (!isFormValid.value) return
+  store.searchByModel(brand.value, model.value, year.value)
+  router.push('/result')
+}
    
 </script>
 
 <template>
         <!-- fundal pagina -->
-    <div class= "min-hscreen bg-grray-50 flex items-center justify-center p-4">
+    <div class= "min-h-screen bg-gray-50 flex items-center justify-center p-4">
         <!-- card alb -->
         <div class="bg-white w-full max-w-md p-6 rounded-lg shadow">
             <img src="@/assets/logoMotix.png" alt="Logo Motix" class="w-20 mx-auto mb-3" />
-            <h1 class=" text-x1 font-semibold text-center mb-2"
+            <h1 class=" text-xl font-semibold text-center mb-2"
             >Select Brand / Model / Year</h1>
 
-            <p class= "text-sm text-gray-500 text center mb-4">
+            <p class= "text-sm text-gray-500 text-center mb-4">
                 Select vehicle details to lookup information
             </p>
 
@@ -53,7 +57,7 @@
             <option v-for="brand in Object.keys(brands)" :key="brand">{{ brand }}</option>
         </select>
 
-        <select v-model="model":disabled="!brand"
+        <select v-model="model" :disabled="!brand"
         class="w-full px-3 py-2 border rounded-md mb-3
         disabled:bg-gray-100 disabled:cursor-not-allowed">
         <option value="">Select Model</option>

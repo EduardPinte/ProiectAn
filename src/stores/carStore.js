@@ -9,8 +9,7 @@ export const useCarStore = defineStore('car', {
     userKm: 0,
     maintenanceLimit: 120000,
     loading: false,
-    error: null
-
+    error: null,
 
     maintenanceData: [
   {
