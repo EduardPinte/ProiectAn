@@ -74,7 +74,7 @@ export const useCarStore = defineStore('car', {
 
   isLoading: (state) => state.loading,
 
-  // 👇 AICI ÎL PUI
+  
   maintenanceInfo(state) {
     if (!state.currentCar) return null
 

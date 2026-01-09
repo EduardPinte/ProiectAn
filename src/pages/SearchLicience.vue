@@ -79,7 +79,7 @@
                focus:outline-none focus:ring-2 focus:ring-blue-400"
       />
 
-      <!-- BUTON -->
+     
       <button
         :disabled="!isLicenseValid"
         @click="search"
