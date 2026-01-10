@@ -9,7 +9,7 @@ import SelectCar from '@/pages/SelectCar.vue'
 import Maintain from '@/pages/Maintain.vue'
 import History from '@/pages/History.vue'
 import Profile from '@/pages/Profile.vue'
-import SelectBMY from '@/pages/SelectBMY.vue' 
+import SelectBMY from '@/pages/SelectBMY.vue'
 import SearchVIN from '@/pages/SearchVIN.vue'
 import SearchLicience from '@/pages/SearchLicience.vue'
 import Result from '@/pages/Result.vue'
@@ -21,10 +21,10 @@ const routes = [
   { path: '/forgot-password', component: ForgotPassword },
   { path: '/check-email', component: CheckEmail },
   { path: '/reset-password', component: ResetPassword },
-  { path: '/home', component: Home},
+  { path: '/home', component: Home },
   { path: '/select-car', component: SelectCar },
   { path: '/maintain', component: Maintain },
-  { path: '/history', component: History }, 
+  { path: '/history', component: History },
   { path: '/profile', component: Profile },
   { path: '/selectBMY', component: SelectBMY },
   { path: '/searchVIN', component: SearchVIN },
