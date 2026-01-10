@@ -82,12 +82,12 @@ define(['./workbox-7f60d0f7'], (function (workbox) { 'use strict';
     "revision": "a3fe099755d5c5b510983497a88a86a3"
   }, {
     "url": "index.html",
-    "revision": "88abf2275b14008be947ea3f1501925f"
+    "revision": "0c9d4efdfb8e5367c8cf1b29a46a107a"
   }, {
-    "url": "assets/index-k41Wrdvr.js",
+    "url": "assets/index-CHTsqTnF.js",
     "revision": null
   }, {
-    "url": "assets/index-05hUDsm3.css",
+    "url": "assets/index-BNF6KAKj.css",
     "revision": null
   }, {
     "url": "icons/logoMotix.png",

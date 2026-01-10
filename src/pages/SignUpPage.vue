@@ -53,7 +53,12 @@ function handleSignUp() {
         />
       </div>
 
-      <button type="submit">Sign Up</button>
+        <button
+  type="button"
+  @click="$router.push('/login')">
+  Sign Up
+</button>
+
     </form>
   </div>
 </template>

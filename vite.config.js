@@ -4,31 +4,27 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 import path from 'path'
 import { VitePWA } from 'vite-plugin-pwa'
 
-export default defineConfig({
-  base: '/MyProject/',
+export default defineConfig(({ mode }) => ({
+  base: mode === 'production' ? '/ProiectAn/' : '/',
   plugins: [
     vue(),
     vueDevTools(),
     VitePWA({
       registerType: 'autoUpdate',
-      devOptions: {
-        enabled: true
-      },
+      devOptions: { enabled: true },
       manifest: {
         theme_color: "#169bcb",
         icons: [
           {
             src: "icons/logoMotix.png",
             sizes: "192x192",
-            type: "image/png",
+            type: "image/png"
           }
         ]
       }
     })
   ],
   resolve: {
-    alias: {
-      '@': path.resolve(__dirname, 'src')
-    }
+    alias: { '@': path.resolve(__dirname, 'src') }
   }
-})
+}))
