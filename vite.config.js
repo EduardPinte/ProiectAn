@@ -10,19 +10,28 @@ export default defineConfig(({ mode }) => ({
     vue(),
     vueDevTools(),
     VitePWA({
-      registerType: 'autoUpdate',
-      devOptions: { enabled: true },
-      manifest: {
-        theme_color: "#169bcb",
-        icons: [
-          {
-            src: "icons/logoMotix.png",
-            sizes: "192x192",
-            type: "image/png"
-          }
-        ]
+  registerType: 'autoUpdate',
+  manifest: {
+    name: 'Motix Vehicle Lookup',
+    short_name: 'Motix',
+    start_url: '/MyProject/',
+    display: 'standalone',
+    theme_color: '#169bcb',
+    background_color: '#ffffff',
+    icons: [
+      {
+        src: '/icons/logoMotix-192.png',
+        sizes: '192x192',
+        type: 'image/png'
+      },
+      {
+        src: '/icons/logoMotix-512.png',
+        sizes: '512x512',
+        type: 'image/png'
       }
-    })
+    ]
+  }
+}) 
   ],
   resolve: {
     alias: { '@': path.resolve(__dirname, 'src') }
