@@ -18,7 +18,7 @@ function handleReset() {
     alert('Passwords do not match')
     return
   }
-  authStore.setPassword(password.value)
+  authStore.setPassword(password.value)     
   alert('Password reset successfully')
   router.push('/login')
 }

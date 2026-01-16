@@ -46,9 +46,9 @@ const car = computed(() => store.currentCar)
           <span class="break-words">{{ car.vin }}</span>
         </div>
 
-        <div v-if="car.license">
+        <div v-if="car.licensePlate">
           <span class="font-medium">License Plate:</span>
-          {{ car.license }}
+          {{ car.licensePlate }}
         </div>
 
         <div class="text-sm text-gray-500">
@@ -59,12 +59,46 @@ const car = computed(() => store.currentCar)
           Searched at:
           {{ new Date(car.searchedAt).toLocaleString() }}
         </div>
+
+        <!-- Maintenance Details Section -->
+        <hr class="my-2" />
+        
+        <div v-if="store.maintenanceInfo" class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+          <h3 class="font-semibold text-blue-900 mb-3">Maintenance Details</h3>
+          
+          <div class="space-y-2 text-sm">
+            <div class="flex justify-between">
+              <span class="font-medium">Oil Type:</span>
+              <span>{{ store.maintenanceInfo.oilType }}</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="font-medium">Oil Capacity:</span>
+              <span>{{ store.maintenanceInfo.oilCapacity }}</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="font-medium">Gearbox Type:</span>
+              <span>{{ store.maintenanceInfo.gearboxType }}</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="font-medium">Differential Oil:</span>
+              <span>{{ store.maintenanceInfo.differentialOil }}</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="font-medium">Service Interval:</span>
+              <span>{{ store.maintenanceInfo.serviceIntervalKm }} km</span>
+            </div>
+          </div>
+        </div>
+
+        <div v-else class="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
+          <p class="text-sm text-yellow-800">No maintenance data available for this vehicle</p>
+        </div>
       </div>
 
       <div class="mt-6 flex gap-3">
         <button
           class="flex-1 py-2 bg-gray-200 rounded-md hover:bg-gray-300 transition"
-          @click="router.push('/')"
+          @click="router.push('/selectBMY')"
         >
           New Search
         </button>
