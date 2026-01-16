@@ -3,25 +3,39 @@ import { useRouter } from 'vue-router'
 </script>
 
 <template>
-  <div class="page">
-    <h1 class="title">Welcome to Motix</h1>
+  <div class="min-h-screen bg-gray-50 flex items-center justify-center p-4">
+    <div class="bg-white w-full max-w-md p-6 rounded-lg shadow">
+      <img
+        src="@/assets/logoMotix.png"
+        alt="Logo Motix"
+        class="w-20 mx-auto mb-6"
+      />
 
-    <div class="middle-buttons">
-      <div class="button-wrapper">
-        <router-link to="/searchLicense">
-          <button>Search by License Plate</button>
+      <h1 class="text-2xl font-semibold text-center mb-2">
+        Welcome to Motix
+      </h1>
+
+      <p class="text-sm text-gray-500 text-center mb-6">
+        Choose how you want to search for vehicle information
+      </p>
+
+      <div class="space-y-3">
+        <router-link to="/searchLicense" class="block">
+          <button class="w-full px-4 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-md font-medium transition">
+            Search by License Plate
+          </button>
         </router-link>
-      </div>
 
-      <div class="button-wrapper">
-        <router-link to="/selectBMY">
-          <button>Select by Brand / Model / Year</button>
+        <router-link to="/selectBMY" class="block">
+          <button class="w-full px-4 py-3 bg-green-600 hover:bg-green-700 text-white rounded-md font-medium transition">
+            Select by Brand / Model / Year
+          </button>
         </router-link>
-      </div>
 
-      <div class="button-wrapper">
-        <router-link to="/searchVIN">
-          <button>Search by VIN (Chassis Number)</button>
+        <router-link to="/searchVIN" class="block">
+          <button class="w-full px-4 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-md font-medium transition">
+            Search by VIN (Chassis Number)
+          </button>
         </router-link>
       </div>
     </div>
@@ -30,36 +44,8 @@ import { useRouter } from 'vue-router'
 
 
 <style scoped>
-.page {
-  font-size: 32px;
-  text-align: center;
-  margin-top: 50px;
-}
-
-.title {
-  font-size: 48px;
-  margin-bottom: 50px;
-}
-
-.middle-buttons {
-  display: flex;
-  flex-direction: column;
-  gap: 20px; 
-  align-items: center;
-}
-
-
-.button-wrapper button {
-  padding: 15px 30px;
-  font-size: 18px;
-  border: 2px solid #181a19;
-  border-radius: 10px;
-  background-color: #42b883;
-  color: white;
+button {
   cursor: pointer;
-  transition: all 0.3s;
-  width: 300px; 
+  transition: all 0.3s ease;
 }
-
-
 </style>

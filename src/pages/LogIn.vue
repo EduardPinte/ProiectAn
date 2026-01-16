@@ -8,18 +8,7 @@ function handleLogin({ email, password }) {
 </script>
 
 <template>
-  <div class="login-container">
+  <div class="min-h-screen bg-cyan-100 flex flex-col items-center justify-center p-4">
     <LoginForm @login="handleLogin" />
   </div>
 </template>
-
-<style scoped>
-.login-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: #B2EBF2;
-  height: 100vh;
-}
-</style>

@@ -16,58 +16,28 @@ function handleReset() {
 </script>
 
 <template>
-  <div class="forgot-container">
-    <form @submit.prevent="handleReset" class="forgot-form">
-      <h2>Forgot Password</h2>
-      <p>Enter your email to receive a verification code.</p>
+  <div class="min-h-screen bg-cyan-100 flex items-center justify-center p-4">
+    <div class="bg-white p-12 rounded-lg shadow-lg w-full max-w-md">
+      <h2 class="text-2xl font-bold text-center mb-2 text-gray-800">Forgot Password</h2>
+      <p class="text-sm text-gray-600 text-center mb-6">Enter your email to receive a verification code.</p>
 
-      <input type="email" v-model="email" placeholder="Enter your email" required />
-      <button type="submit">Send Code</button>
-    </form>
+      <form @submit.prevent="handleReset" class="space-y-6">
+        <div>
+          <input 
+            type="email" 
+            v-model="email" 
+            placeholder="Enter your email" 
+            required 
+            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+          />
+        </div>
+        <button 
+          type="submit"
+          class="w-full py-2 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-md transition-colors duration-300"
+        >
+          Send Code
+        </button>
+      </form>
+    </div>
   </div>
 </template>
-
-<style scoped>
-.forgot-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: #B2EBF2; /* background albastru deschis */
-}
-
-.forgot-form {
-  background-color: white; /* container alb */
-  padding: 50px;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  width: 100%;
-  max-width: 400px;
-  text-align: center;
-}
-
-input {
-  width: 100%;
-  padding: 10px;
-  margin-top: 12px;
-  margin-bottom: 20px;
-  border: 1px solid #bcb1b1;
-  border-radius: 5px;
-}
-
-button {
-  width: 100%;
-  padding: 12px;
-  background-color: #42b883;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s;
-}
-
-button:hover {
-  background-color: #2c8e64;
-}
-</style>

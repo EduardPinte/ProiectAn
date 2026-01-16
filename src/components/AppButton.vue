@@ -1,5 +1,5 @@
 <template>
-    <button class="app-button" @click="$emit('click')">
+    <button @click="$emit('click')" class="px-5 py-2 bg-green-600 hover:bg-green-700 text-white rounded-md font-medium transition-colors duration-300">
         {{ label }}
     </button>
 </template>
@@ -11,16 +11,3 @@ const props = defineProps({
     }
 })
 </script>
-
-<style scoped>
-.app-button {
-    background-color: #42b883;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-</style>

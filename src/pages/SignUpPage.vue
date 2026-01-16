@@ -16,99 +16,58 @@ function handleSignUp() {
 </script>
 
 <template>
-  <div class="signup-container">
-    <form @submit.prevent="handleSignUp" class="signup-form">
-      <h2>Create Account</h2>
+  <div class="min-h-screen bg-cyan-100 flex items-center justify-center p-4">
+    <form @submit.prevent="handleSignUp" class="bg-white p-12 rounded-lg shadow-lg w-full max-w-md">
+      <h2 class="text-2xl font-bold text-center mb-6 text-gray-800">Create Account</h2>
 
-      <div class="form-group">
-        <label for="email">Email:</label>
+      <div class="mb-6">
+        <label for="email" class="block mb-2 font-medium text-gray-700">Email:</label>
         <input
           id="email"
           type="email"
           v-model="email"
           placeholder="Enter your email"
           required
+          class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
         />
       </div>
 
-      <div class="form-group">
-        <label for="password">Password:</label>
+      <div class="mb-6">
+        <label for="password" class="block mb-2 font-medium text-gray-700">Password:</label>
         <input
           id="password"
           type="password"
           v-model="password"
           placeholder="Enter your password"
           required
+          class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
         />
       </div>
 
-      <div class="form-group">
-        <label for="confirmPassword">Confirm Password:</label>
+      <div class="mb-8">
+        <label for="confirmPassword" class="block mb-2 font-medium text-gray-700">Confirm Password:</label>
         <input
           id="confirmPassword"
           type="password"
           v-model="confirmPassword"
           placeholder="Re-enter your password"
           required
+          class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
         />
       </div>
 
-        <button
-  type="button"
-  @click="$router.push('/login')">
-  Sign Up
-</button>
+      <button
+        type="submit"
+        class="w-full py-2 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-md transition-colors duration-300 mb-4"
+      >
+        Sign Up
+      </button>
 
+      <div class="text-center text-sm">
+        <p>Already have an account?
+          <router-link to="/login" class="text-blue-600 hover:text-green-600 hover:underline">Log In</router-link>
+        </p>
+      </div>
     </form>
   </div>
 </template>
-
-<style scoped>
-.signup-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: #B2EBF2;
-}
-
-.signup-form {
-  background: white;
-  padding: 60px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 400px;
-}
-
-.form-group {
-  margin-bottom: 28px;
-}
-
-label {
-  display: block;
-  margin-bottom: 8px;
-}
-
-input {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #bcb1b1;
-  border-radius: 5px;
-}
-
-button {
-  width: 100%;
-  padding: 10px;
-  background-color: #42b883;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-button:hover {
-  background-color: #2c8e64;
-}
-</style>

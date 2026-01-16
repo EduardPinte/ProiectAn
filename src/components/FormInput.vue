@@ -12,8 +12,8 @@ const emit = defineEmits(['update:modelValue'])
 </script>
 
 <template>
-  <div class="form-group">
-    <label :for="id">{{ label }}</label>
+  <div class="mb-6">
+    <label :for="id" class="block mb-2 font-medium text-gray-700">{{ label }}</label>
     <input
       :id="id"
       :type="type"
@@ -21,12 +21,7 @@ const emit = defineEmits(['update:modelValue'])
       :required="required"
       :value="modelValue"
       @input="emit('update:modelValue', $event.target.value)"
+      class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
     />
   </div>
 </template>
-
-<style scoped>
-.form-group { margin-bottom: 28px; }
-label { display: block; margin-bottom: 8px; }
-input { width: 100%; padding: 8px; border: 1px solid #bcb1b1; border-radius: 5px; }
-</style>

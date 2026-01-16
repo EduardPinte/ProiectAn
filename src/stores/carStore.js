@@ -104,7 +104,7 @@ export const useCarStore = defineStore('car', {
     },
 
     searchByLicense(license) {
-      this.searchType = 'license'
+      this.searchType = 'HD52EDI'
       this.currentCar = {
         license,
         brand: 'BMW',

@@ -38,12 +38,12 @@ function handleVerify() {
 </script>
 
 <template>
-  <div class="check-container">
-    <form @submit.prevent="handleVerify" class="check-form">
-      <h2>Check Your Email</h2>
-      <p>Enter the 6-digit verification code sent to your email.</p>
+  <div class="min-h-screen bg-cyan-100 flex items-center justify-center p-4">
+    <form @submit.prevent="handleVerify" class="bg-white p-12 rounded-lg shadow-lg w-full max-w-md text-center">
+      <h2 class="text-2xl font-bold mb-2 text-gray-800">Check Your Email</h2>
+      <p class="text-gray-600 mb-6">Enter the 6-digit verification code sent to your email.</p>
 
-      <div class="code-inputs">
+      <div class="flex justify-center gap-2 mb-6">
         <input
           v-for="(c, index) in code"
           :key="index"
@@ -53,60 +53,13 @@ function handleVerify() {
           v-model="code[index]"
           @input="handleInput(index, $event)"
           @keydown.backspace="handleBackspace(index, $event)"
+          class="w-12 h-14 text-center text-2xl font-semibold border-2 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
         />
       </div>
 
-      <button type="submit">Verify Code</button>
+      <button type="submit" class="w-full py-2 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-md transition-colors duration-300">
+        Verify Code
+      </button>
     </form>
   </div>
 </template>
-
-<style scoped>
-.check-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: #B2EBF2;
-}
-
-.check-form {
-  background: white;
-  padding: 50px;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  width: 100%;
-  max-width: 400px;
-  text-align: center;
-}
-
-.code-inputs {
-  display: flex;
-  justify-content: space-between;
-  margin: 20px 0;
-}
-
-.code-inputs input {
-  width: 40px;
-  height: 50px;
-  text-align: center;
-  font-size: 24px;
-  border: 1px solid #bcb1b1;
-  border-radius: 5px;
-}
-button {
-  width: 100%;
-  padding: 12px;
-  background-color: #42b883;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  margin-top: 10px;
-  transition: background-color 0.3s;
-}
-button:hover {
-  background-color: #2c8e64;
-}
-</style>
