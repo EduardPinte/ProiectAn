@@ -1,22 +1,40 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { useAuthStore } from '@/stores/authStore'
 import FormInput from './FormInput.vue'
 
-const router=useRouter()
+const router = useRouter()
+const authStore = useAuthStore()
+
 const email = ref('')
 const password = ref('')
-const emit = defineEmits(['login'])
 
 function handleSubmit() {
-   if(
-    email.value === 'eduard.pinte@emanuel.ro' && 
-    password.value === 'UEOI2'
-   ){
-    router.push('/home')
-   }else{
+  if (email.value !== 'eduard.pinte@emanuel.ro') {
     alert('Invalid email or password')
-   }
+    return
+  }
+
+  if (!password.value) {
+    alert('Enter password')
+    return
+  }
+
+   if (!authStore.password) {
+    authStore.setPassword(password.value)
+    alert('Password set successfully')
+    router.push('/home')
+    return
+  }
+
+
+  if (!authStore.checkPassword(password.value)) {
+    alert('Invalid email or password')
+    return
+  }
+
+  router.push('/home')
 }
 </script>
 
