@@ -1,9 +1,11 @@
 <script setup>
 import { ref, computed, watch } from 'vue'
 import { useCarStore } from '@/stores/carStore'
+import { useRouter } from 'vue-router'
 
 const vin = ref('')
 const store = useCarStore()
+const router = useRouter()
 
 
 
