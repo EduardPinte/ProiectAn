@@ -72,7 +72,7 @@ const car = computed(() => store.currentCar)
       <div class="mt-6 flex gap-3">
         <button
           class="flex-1 py-2 bg-gray-200 rounded-md"
-          @click="router.push('/')"
+          @click="router.push('/select-car')"
         >
           New Search
         </button>

@@ -1,0 +1,45 @@
+{
+  "name": "ProiectAn Main - Vue.js Dev Container",
+  "dockerComposeFile": "../compose.yaml",
+  "service": "app",
+  "workspaceFolder": "/app",
+
+  "mounts": [
+    "source=${localEnv:HOME}${localEnv:USERPROFILE}/.gitconfig,target=/home/node/.gitconfig,type=bind,consistency=cached"
+  ],
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "Vue.volar",
+        "esbenp.prettier-vscode",
+        "dbarton.vscode-eslint"
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+        "[vue]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[javascript]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[typescript]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[json]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        }
+      }
+    }
+  },
+
+  "forwardPorts": [5173],
+
+  "containerEnv": {
+    "COREPACK_ENABLE_DOWNLOAD_PROMPT": "0"
+  },
+
+  "postCreateCommand": "yarn install"
+}

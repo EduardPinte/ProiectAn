@@ -24,7 +24,7 @@ const router = useRouter()
           </div>
           <div class="pb-4">
             <p class="text-sm text-gray-500 font-semibold">MEMBER SINCE</p>
-            <p class="text-lg">January 2024</p>
+            <p class="text-lg">January 2025</p>
           </div>
         </div>
 
