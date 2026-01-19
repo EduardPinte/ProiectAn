@@ -5,6 +5,7 @@ import json from "@eslint/json";
 import markdown from "@eslint/markdown";
 import css from "@eslint/css";
 import { defineConfig } from "eslint/config";
+import pluginPrettier from "eslint-plugin-prettier";
 
 export default defineConfig([
   // Ignore paths
@@ -43,7 +44,9 @@ export default defineConfig([
     files: ["**/*.json"],
     plugins: { json },
     language: "json/json",
-    extends: ["json/recommended"]
+    extends: ["json/recommended"],
+
+    pluginPrettier
   },
 
 

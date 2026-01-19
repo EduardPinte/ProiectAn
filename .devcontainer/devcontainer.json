@@ -1,5 +1,5 @@
 {
-  "name": "ProiectAn Main - Vue.js Dev Container",
+  "name": "ProiectAn Main Dev Container",
   "dockerComposeFile": "../compose.yaml",
   "service": "app",
   "workspaceFolder": "/app",
@@ -12,12 +12,19 @@
     "vscode": {
       "extensions": [
         "Vue.volar",
-        "esbenp.prettier-vscode",
-        "dbarton.vscode-eslint"
+        "dbaeumer.vscode-eslint",
+        "dbarton.vscode-eslint",
+        "arcanis.vscode-zipfs",
+        "esbenp.prettier-vscode"
       ],
       "settings": {
         "editor.formatOnSave": true,
         "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+        "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": "always",
+          "source.fixAll": "always"
+        },
 
         "[vue]": {
           "editor.defaultFormatter": "esbenp.prettier-vscode"
