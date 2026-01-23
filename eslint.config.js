@@ -5,6 +5,7 @@ import json from "@eslint/json";
 import markdown from "@eslint/markdown";
 import css from "@eslint/css";
 import { defineConfig } from "eslint/config";
+
 import pluginPrettier from "eslint-plugin-prettier";
 
 export default defineConfig([
@@ -33,23 +34,21 @@ export default defineConfig([
     }
   },
 
-
+  // Vue essential rules (flat config compatible)
   ...pluginVue.configs["flat/essential"].map(config => ({
     ...config,
     files: ["**/*.vue"]
   })),
 
-  
+  // JSON
   {
     files: ["**/*.json"],
     plugins: { json },
     language: "json/json",
-    extends: ["json/recommended"],
-
-    
+    extends: ["json/recommended"]
   },
 
-
+  // JSONC
   {
     files: ["**/*.jsonc"],
     plugins: { json },
@@ -57,7 +56,7 @@ export default defineConfig([
     extends: ["json/recommended"]
   },
 
-  
+  // JSON5
   {
     files: ["**/*.json5"],
     plugins: { json },
@@ -65,7 +64,7 @@ export default defineConfig([
     extends: ["json/recommended"]
   },
 
-
+  // Markdown
   {
     files: ["**/*.md"],
     plugins: { markdown },
@@ -81,5 +80,13 @@ export default defineConfig([
     extends: ["css/recommended"]
   },
 
-  pluginPrettier
+  // Prettier (FIX IMPORTANT)
+  {
+    plugins: {
+      prettier: pluginPrettier
+    },
+    rules: {
+      "prettier/prettier": "error"
+    }
+  }
 ]);
