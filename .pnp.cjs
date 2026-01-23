@@ -41,10 +41,10 @@ const RAW_RUNTIME_STATE =
           ["eslint-config-prettier", "virtual:3fc5da46c7793d7db10c8ec724fcbede8b4e0360f9e58db4f582cdbdb856439dde87b735c32e684596ab2356b6d3567b4fac851992447dc0e52935a37421ee2a#npm:10.1.8"],\
           ["eslint-plugin-vue", "virtual:3fc5da46c7793d7db10c8ec724fcbede8b4e0360f9e58db4f582cdbdb856439dde87b735c32e684596ab2356b6d3567b4fac851992447dc0e52935a37421ee2a#npm:10.7.0"],\
           ["gh-pages", "npm:6.3.0"],\
-          ["globals", "npm:17.0.0"],\
+          ["globals", "npm:17.1.0"],\
           ["pinia", "virtual:3fc5da46c7793d7db10c8ec724fcbede8b4e0360f9e58db4f582cdbdb856439dde87b735c32e684596ab2356b6d3567b4fac851992447dc0e52935a37421ee2a#npm:3.0.4"],\
           ["postcss", "npm:8.5.6"],\
-          ["prettier", "npm:3.8.0"],\
+          ["prettier", "npm:3.8.1"],\
           ["prettier-plugin-tailwindcss", "virtual:3fc5da46c7793d7db10c8ec724fcbede8b4e0360f9e58db4f582cdbdb856439dde87b735c32e684596ab2356b6d3567b4fac851992447dc0e52935a37421ee2a#npm:0.7.2"],\
           ["proiect-an", "workspace:."],\
           ["tailwindcss", "npm:4.1.18"],\
@@ -5643,10 +5643,10 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "HARD"\
       }],\
-      ["npm:17.0.0", {\
-        "packageLocation": "../home/node/.yarn/berry/cache/globals-npm-17.0.0-cd88395af3-10c0.zip/node_modules/globals/",\
+      ["npm:17.1.0", {\
+        "packageLocation": "../home/node/.yarn/berry/cache/globals-npm-17.1.0-baf660f37b-10c0.zip/node_modules/globals/",\
         "packageDependencies": [\
-          ["globals", "npm:17.0.0"]\
+          ["globals", "npm:17.1.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -7809,10 +7809,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["prettier", [\
-      ["npm:3.8.0", {\
-        "packageLocation": "./.yarn/unplugged/prettier-npm-3.8.0-7cbf267d2c/node_modules/prettier/",\
+      ["npm:3.8.1", {\
+        "packageLocation": "./.yarn/unplugged/prettier-npm-3.8.1-04022a855f/node_modules/prettier/",\
         "packageDependencies": [\
-          ["prettier", "npm:3.8.0"]\
+          ["prettier", "npm:3.8.1"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -7852,7 +7852,7 @@ const RAW_RUNTIME_STATE =
           ["@types/trivago__prettier-plugin-sort-imports", null],\
           ["@types/zackad__prettier-plugin-twig", null],\
           ["@zackad/prettier-plugin-twig", null],\
-          ["prettier", "npm:3.8.0"],\
+          ["prettier", "npm:3.8.1"],\
           ["prettier-plugin-astro", null],\
           ["prettier-plugin-css-order", null],\
           ["prettier-plugin-jsdoc", null],\
@@ -7945,10 +7945,10 @@ const RAW_RUNTIME_STATE =
           ["eslint-config-prettier", "virtual:3fc5da46c7793d7db10c8ec724fcbede8b4e0360f9e58db4f582cdbdb856439dde87b735c32e684596ab2356b6d3567b4fac851992447dc0e52935a37421ee2a#npm:10.1.8"],\
           ["eslint-plugin-vue", "virtual:3fc5da46c7793d7db10c8ec724fcbede8b4e0360f9e58db4f582cdbdb856439dde87b735c32e684596ab2356b6d3567b4fac851992447dc0e52935a37421ee2a#npm:10.7.0"],\
           ["gh-pages", "npm:6.3.0"],\
-          ["globals", "npm:17.0.0"],\
+          ["globals", "npm:17.1.0"],\
           ["pinia", "virtual:3fc5da46c7793d7db10c8ec724fcbede8b4e0360f9e58db4f582cdbdb856439dde87b735c32e684596ab2356b6d3567b4fac851992447dc0e52935a37421ee2a#npm:3.0.4"],\
           ["postcss", "npm:8.5.6"],\
-          ["prettier", "npm:3.8.0"],\
+          ["prettier", "npm:3.8.1"],\
           ["prettier-plugin-tailwindcss", "virtual:3fc5da46c7793d7db10c8ec724fcbede8b4e0360f9e58db4f582cdbdb856439dde87b735c32e684596ab2356b6d3567b4fac851992447dc0e52935a37421ee2a#npm:0.7.2"],\
           ["proiect-an", "workspace:."],\
           ["tailwindcss", "npm:4.1.18"],\

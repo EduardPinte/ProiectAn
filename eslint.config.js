@@ -46,7 +46,7 @@ export default defineConfig([
     language: "json/json",
     extends: ["json/recommended"],
 
-    pluginPrettier
+    
   },
 
 
@@ -79,5 +79,7 @@ export default defineConfig([
     plugins: { css },
     language: "css/css",
     extends: ["css/recommended"]
-  }
+  },
+
+  pluginPrettier
 ]);
