@@ -9,7 +9,7 @@ import { defineConfig } from "eslint/config";
 import pluginPrettier from "eslint-plugin-prettier";
 
 export default defineConfig([
-  // Ignore paths
+
   {
     ignores: [
       "dist/**",
@@ -20,7 +20,6 @@ export default defineConfig([
     ]
   },
 
-  // JavaScript + Vue base rules
   {
     files: ["**/*.{js,mjs,cjs,vue}"],
     plugins: { js },
@@ -34,13 +33,13 @@ export default defineConfig([
     }
   },
 
-  // Vue essential rules (flat config compatible)
+ 
   ...pluginVue.configs["flat/essential"].map(config => ({
     ...config,
     files: ["**/*.vue"]
   })),
 
-  // JSON
+
   {
     files: ["**/*.json"],
     plugins: { json },
@@ -48,7 +47,7 @@ export default defineConfig([
     extends: ["json/recommended"]
   },
 
-  // JSONC
+
   {
     files: ["**/*.jsonc"],
     plugins: { json },
@@ -56,7 +55,7 @@ export default defineConfig([
     extends: ["json/recommended"]
   },
 
-  // JSON5
+
   {
     files: ["**/*.json5"],
     plugins: { json },
@@ -64,7 +63,7 @@ export default defineConfig([
     extends: ["json/recommended"]
   },
 
-  // Markdown
+
   {
     files: ["**/*.md"],
     plugins: { markdown },
@@ -72,7 +71,7 @@ export default defineConfig([
     extends: ["markdown/recommended"]
   },
 
-  // CSS
+
   {
     files: ["**/*.css"],
     plugins: { css },
@@ -80,7 +79,7 @@ export default defineConfig([
     extends: ["css/recommended"]
   },
 
-  // Prettier (FIX IMPORTANT)
+  
   {
     plugins: {
       prettier: pluginPrettier

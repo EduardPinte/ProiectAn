@@ -12,9 +12,18 @@
     "vscode": {
       "extensions": [
         "Vue.volar",
-        
+        "dbaeumer.vscode-eslint",
+        "arcanis.vscode-zipfs",
+        "esbenp.prettier-vscode"
       ],
       "settings": {
+        "editor.formatOnSasve": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": "always",
+          "source.fixAll": "always",
+        },
+
         "editor.formatOnSave": true,
         "[vue]": {
           "editor.defaultFormatter": "Vue.volar"
