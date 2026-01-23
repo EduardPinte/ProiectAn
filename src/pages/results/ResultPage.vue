@@ -19,11 +19,7 @@ const car = computed(() => store.currentCar)
   <div class="min-h-screen bg-gray-50 flex items-center justify-center p-4">
     <div class="bg-white w-full max-w-lg p-6 rounded-lg shadow">
 
-      <img
-        src="@/assets/logoMotix.png"
-        alt="Motix logo"
-        class="w-20 mx-auto mb-4"
-      />
+      <img src="@/assets/logoMotix.png" alt="Motix logo" class="w-20 mx-auto mb-4" />
 
       <h1 class="text-2xl font-semibold text-center mb-4">
         Vehicle Details
@@ -62,10 +58,10 @@ const car = computed(() => store.currentCar)
 
         <!-- Maintenance Details Section -->
         <hr class="my-2" />
-        
+
         <div v-if="store.maintenanceInfo" class="bg-blue-50 p-4 rounded-lg border border-blue-200">
           <h3 class="font-semibold text-blue-900 mb-3">Maintenance Details</h3>
-          
+
           <div class="space-y-2 text-sm">
             <div class="flex justify-between">
               <span class="font-medium">Oil Type:</span>
@@ -96,17 +92,13 @@ const car = computed(() => store.currentCar)
       </div>
 
       <div class="mt-6 flex gap-3">
-        <button
-          class="flex-1 py-2 bg-gray-200 rounded-md hover:bg-gray-300 transition"
-          @click="router.push('/select-car')"
-        >
+        <button class="flex-1 py-2 bg-gray-200 rounded-md hover:bg-gray-300 transition"
+          @click="router.push('/select-car')">
           New Search
         </button>
 
-        <button
-          class="flex-1 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
-          @click="router.push('/history')"
-        >
+        <button class="flex-1 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
+          @click="router.push('/history')">
           History
         </button>
       </div>
