@@ -9,7 +9,7 @@ services:
       CHOKIDAR_USEPOLLING: true
       CHOKIDAR_INTERVAL: 100
     ports:
-      - "5173:5173"
+      - "5174:5173"
     volumes:
       - ./:/task
       # exclude
@@ -26,6 +26,11 @@ services:
       NODE_ENV: development
       CHOKIDAR_USEPOLLING: true
       CHOKIDAR_INTERVAL: 100
+      DB_NAME: autoservice
+      DB_USER: root
+      DB_PASSWORD: admin
+      DB_HOST: mysql.taskproject
+      DB_PORT: 3306
     ports:
       - "3000:3000"
     volumes:
@@ -42,7 +47,7 @@ services:
       - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: admin
-      MYSQL_DATABASE: task
+      MYSQL_DATABASE: autoservice
       MYSQL_USER: task
       MYSQL_PASSWORD: task
     volumes:
@@ -59,8 +64,8 @@ services:
       - "8088:80"
     environment:
       PMA_HOST: mysql.taskproject
-      PMA_USER: task
-      PMA_PASSWORD: task
+      PMA_USER: root
+      PMA_PASSWORD: admin
       UPLOAD_LIMIT: 250M
     restart: always
 

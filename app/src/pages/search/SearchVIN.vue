@@ -6,6 +6,7 @@ import { useRouter } from 'vue-router'
 const vin = ref('')
 const store = useCarStore()
 const router = useRouter()
+const localError = ref('')
 
 const isVinValid = computed(() => vin.value.length === 17)
 const vinLength = computed(() => vin.value.length)
@@ -31,9 +32,15 @@ watch(
 
 function search() {
   if (!isVinValid.value) return
-  store.searchByVIN(vin.value)
-  router.push('/result')
-} 
+  localError.value = ''
+  store.searchByVIN(vin.value).then((car) => {
+    if (car) {
+      router.push('/result')
+      return
+    }
+    localError.value = 'Masina nu a fost gasita in tabela cars.'
+  })
+}
 </script>
 
 <template>
@@ -66,6 +73,9 @@ function search() {
       <p v-if="vinStatusMessage" class="text-sm mt-2 text-gray-600">
         {{ vinStatusMessage }} ({{ vinLength }}/17)
       </p>
+      <p v-if="localError || store.error" class="mt-2 text-sm text-red-600">
+        {{ localError || store.error }}
+      </p>
 
       <div v-if="store.currentCar" class="mt-4 text-gray-700">
         <div class="font-medium">
@@ -73,9 +83,13 @@ function search() {
         </div>
         <div class="text-sm">Year: {{ store.currentCar.year }}</div>
         <div class="text-sm break-words">
-          VIN: {{ store.currentCar.vin || store.currentCar.license }}
+          VIN: {{ store.currentCar.vin }}
         </div>
       </div>
+
+      <button class="mt-4 w-full rounded-md bg-slate-700 py-2 text-white hover:bg-slate-800" @click="router.push('/home')">
+        Home
+      </button>
 
     </div>
   </div>

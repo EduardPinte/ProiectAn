@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useCarStore } from '../../stores/carStore'
 import { useRouter } from 'vue-router'
 
@@ -9,19 +9,26 @@ const router = useRouter()
 const brand = ref('')
 const model = ref('')
 const year = ref('')
+const localError = ref('')
 
-const brands = {
-  Mercedes: ['A-Class', 'C-Class', 'E-Class'],
-  BMW: ['Series 1', 'Series 3', 'Series 5', 'X3', 'X5'],
-  Audi: ['A3', 'A4', 'A6'],
-  Toyota: ['Corolla', 'Camry', 'RAV4'],
-  Nissan: ['Sentra', 'Altima', 'Rogue']
-}
+onMounted(async () => {
+  await store.loadCarsCatalog()
+})
 
-const models = computed(() => brands[brand.value] || [])
+const brands = computed(() => [...new Set(store.carsCache.map((car) => car.brand))].sort())
+
+const models = computed(() => {
+  if (!brand.value) return []
+  return [...new Set(store.carsCache.filter((car) => car.brand === brand.value).map((car) => car.model))].sort()
+})
 
 const years = computed(() =>
-  Array.from({ length: 28 }, (_, i) => 2026 - i)
+  [...new Set(
+    store.carsCache
+      .filter((car) => (!brand.value || car.brand === brand.value) && (!model.value || car.model === model.value))
+      .map((car) => car.year)
+      .filter(Boolean)
+  )].sort((a, b) => b - a)
 )
 
 const isFormValid = computed(
@@ -30,8 +37,14 @@ const isFormValid = computed(
 
 function search() {
   if (!isFormValid.value) return
-  store.searchByModel(brand.value, model.value, year.value)
-  router.push('/result')
+  localError.value = ''
+  store.searchByModel(brand.value, model.value, Number(year.value)).then((car) => {
+    if (car) {
+      router.push('/result')
+      return
+    }
+    localError.value = 'Masina nu a fost gasita in tabela cars.'
+  })
 }
 </script>
 
@@ -52,7 +65,7 @@ function search() {
       <select v-model="brand" class="w-full px-3 py-2 border rounded-md mb-3
                focus:outline-none focus:ring-2 focus:ring-blue-400">
         <option value="">Select Brand</option>
-        <option v-for="b in Object.keys(brands)" :key="b" :value="b">
+        <option v-for="b in brands" :key="b" :value="b">
           {{ b }}
         </option>
       </select>
@@ -77,6 +90,9 @@ function search() {
                disabled:bg-blue-300 disabled:cursor-not-allowed">
         Search
       </button>
+      <p v-if="localError || store.error" class="mt-2 text-sm text-red-600">
+        {{ localError || store.error }}
+      </p>
 
       <div v-if="store.currentCar" class="mt-5 p-3 bg-gray-100 rounded-md text-center">
         <div class="font-medium">
@@ -86,6 +102,10 @@ function search() {
           Year: {{ store.currentCar.year }}
         </div>
       </div>
+
+      <button class="mt-4 w-full rounded-md bg-slate-700 py-2 text-white hover:bg-slate-800" @click="router.push('/home')">
+        Home
+      </button>
 
     </div>
   </div>

@@ -6,6 +6,7 @@ import { useRouter } from 'vue-router'
 const router = useRouter()
 const license = ref('')
 const store = useCarStore()
+const localError = ref('')
 
 const isLicenseValid = computed(() => license.value.length >= 5)
 const licenseLength = computed(() => license.value.length)
@@ -31,8 +32,14 @@ watch(
 
 function search() {
   if (!isLicenseValid.value) return
-  store.searchByLicense(license.value)
-  router.push('/result')
+  localError.value = ''
+  store.searchByLicense(license.value).then((car) => {
+    if (car) {
+      router.push('/result')
+      return
+    }
+    localError.value = 'Masina nu a fost gasita in tabela cars.'
+  })
 }
 </script>
 
@@ -73,6 +80,9 @@ function search() {
       <p v-if="licenseStatusMessage" class="text-sm mt-2 text-gray-600">
         {{ licenseStatusMessage }} ({{ licenseLength }} characters)
       </p>
+      <p v-if="localError || store.error" class="mt-2 text-sm text-red-600">
+        {{ localError || store.error }}
+      </p>
 
       <div v-if="store.currentCar" class="mt-4 text-gray-700">
         <div class="font-medium">
@@ -82,9 +92,13 @@ function search() {
           Year: {{ store.currentCar.year }}
         </div>
         <div class="text-sm break-words">
-          License: {{ store.currentCar.license }}
+          License: {{ store.currentCar.licensePlate }}
         </div>
       </div>
+
+      <button class="mt-4 w-full rounded-md bg-slate-700 py-2 text-white hover:bg-slate-800" @click="router.push('/home')">
+        Home
+      </button>
 
     </div>
   </div>

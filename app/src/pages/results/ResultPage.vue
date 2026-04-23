@@ -101,6 +101,9 @@ const car = computed(() => store.currentCar)
           @click="router.push('/history')">
           History
         </button>
+        <button class="flex-1 py-2 bg-slate-700 text-white rounded-md hover:bg-slate-800 transition" @click="router.push('/home')">
+          Home
+        </button>
       </div>
     </div>
   </div>

@@ -36,6 +36,11 @@
             Maintain
           </button>
         </router-link>
+        <router-link to="/workshop-admin" class="flex-1 min-w-max">
+          <button class="w-full px-6 py-3 bg-amber-600 hover:bg-amber-700 text-white rounded-lg font-semibold transition-colors duration-300">
+            Workshop Admin
+          </button>
+        </router-link>
         <router-link to="/profile" class="flex-1 min-w-max">
           <button class="w-full px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-semibold transition-colors duration-300">
             Profile

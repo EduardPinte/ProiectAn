@@ -1,61 +1,18 @@
 import { defineStore } from 'pinia'
+import { mechanicService } from '@/services/mechanicService'
 
 export const useCarStore = defineStore('car', {
   state: () => ({
     currentCar: null,
     recentCars: [],
     searchHistory: [],
-    searchType: '', 
+    searchType: '',
     licensePlate: '',
     userKm: 0,
     maintenanceLimit: 120000,
     loading: false,
     error: null,
-
-    carDatabase: [
-      {
-        vin: '19UUA66531L000100',
-        licensePlate: 'B311XYZ',
-        brand: 'Audi',
-        model: 'A4',
-        year: 2019
-      },
-      {
-        vin: '12345ABCDE6789012',
-        licensePlate: 'HD52EDI',
-        brand: 'BMW',
-        model: 'X3',
-        year: 2020
-      },
-      {
-        vin: '55BMX77D55E555555',
-        licensePlate: 'AR10GZU',
-        brand: 'BMW',
-        model: 'X5',
-        year: 2021
-      },
-      {
-        vin: 'WBADH1KL3MG000001',
-        licensePlate: 'BH33SMI',
-        brand: 'Mercedes',
-        model: 'C-Class',
-        year: 2019
-      },
-      {
-        vin: 'JTDKN3AU0J9000001',
-        licensePlate: 'CJ99TCR',
-        brand: 'Toyota',
-        model: 'Corolla',
-        year: 2020
-      },
-      {
-        vin: 'JT2BF10K910033851',
-        licensePlate: 'TM04SUS',
-        brand: 'Nissan',
-        model: 'Rogue',
-        year: 2021
-      }
-    ],
+    carsCache: [],
 
     maintenanceData: [
   {
@@ -175,56 +132,96 @@ export const useCarStore = defineStore('car', {
 },
 
   actions: {
-    searchByVIN(vin) {
+    normalizeCar(car, searchType) {
+      if (!car) return null
+      return {
+        id: car.id,
+        vin: car.vin,
+        licensePlate: car.plate_number,
+        brand: car.brand,
+        model: car.model,
+        year: car.year,
+        searchedAt: new Date().toISOString(),
+        searchType
+      }
+    },
+
+    async fetchCars(params = {}) {
+      const response = await mechanicService.searchCars(params)
+      return response.data || []
+    },
+
+    async searchByVIN(vin) {
       this.searchType = 'vin'
-      const car = this.carDatabase.find(c => c.vin.toUpperCase() === vin.toUpperCase())
-      
-      if (car) {
-        this.currentCar = {
-          vin: car.vin,
-          licensePlate: car.licensePlate,
-          brand: car.brand,
-          model: car.model,
-          year: car.year,
-          searchedAt: new Date().toISOString()
-        }
-      } else {
+      this.setLoading(true)
+      this.clearError()
+      try {
+        const cars = await this.fetchCars({ vin: vin.toUpperCase() })
+        this.currentCar = this.normalizeCar(cars[0], 'vin')
+        this.addRecentCar(this.currentCar)
+        this.addToSearchHistory(this.currentCar)
+        return this.currentCar
+      } catch (error) {
+        this.setError(error.message)
         this.currentCar = null
+        return null
+      } finally {
+        this.setLoading(false)
       }
-      
-      this.addRecentCar(this.currentCar)
-      this.addToSearchHistory(this.currentCar)
     },
 
-    searchByLicense(license) {
+    async searchByLicense(license) {
       this.searchType = 'license'
-      const car = this.carDatabase.find(c => c.licensePlate.toUpperCase() === license.toUpperCase())
-      
-      if (car) {
-        this.currentCar = {
-          vin: car.vin,
-          licensePlate: car.licensePlate,
-          brand: car.brand,
-          model: car.model,
-          year: car.year,
-          searchedAt: new Date().toISOString()
-        }
-      } else {
+      this.setLoading(true)
+      this.clearError()
+      try {
+        const cars = await this.fetchCars({ plate_number: license.toUpperCase() })
+        this.currentCar = this.normalizeCar(cars[0], 'license')
+        this.addRecentCar(this.currentCar)
+        this.addToSearchHistory(this.currentCar)
+        return this.currentCar
+      } catch (error) {
+        this.setError(error.message)
         this.currentCar = null
+        return null
+      } finally {
+        this.setLoading(false)
       }
-      
-      this.addRecentCar(this.currentCar)
-      this.addToSearchHistory(this.currentCar)
     },
 
-    searchByModel(brand, model, year) {
+    async searchByModel(brand, model, year) {
       this.searchType = 'model'
-      this.currentCar = { brand, model, year, searchedAt: new Date().toISOString() }
-      this.addRecentCar(this.currentCar)
-      this.addToSearchHistory(this.currentCar)
+      this.setLoading(true)
+      this.clearError()
+      try {
+        const cars = await this.fetchCars({ brand, model, year })
+        this.currentCar = this.normalizeCar(cars[0], 'model')
+        this.addRecentCar(this.currentCar)
+        this.addToSearchHistory(this.currentCar)
+        return this.currentCar
+      } catch (error) {
+        this.setError(error.message)
+        this.currentCar = null
+        return null
+      } finally {
+        this.setLoading(false)
+      }
+    },
+
+    async loadCarsCatalog() {
+      this.setLoading(true)
+      this.clearError()
+      try {
+        this.carsCache = await this.fetchCars()
+      } catch (error) {
+        this.setError(error.message)
+      } finally {
+        this.setLoading(false)
+      }
     },
 
     addRecentCar(car) {
+      if (!car) return
       this.recentCars.unshift(car)
       if (this.recentCars.length > 5) {
         this.recentCars.pop()
@@ -256,6 +253,7 @@ export const useCarStore = defineStore('car', {
     },
 
     addToSearchHistory(car) {
+      if (!car) return
       this.searchHistory.unshift(car)
       if (this.searchHistory.length > 50) {
         this.searchHistory.pop()
